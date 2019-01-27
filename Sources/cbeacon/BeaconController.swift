@@ -10,6 +10,9 @@ import Foundation
 import CoreLocation
 import CoreBluetooth
 
+// Wait time until Bluetooth turns on
+let WAIT_BT_TIME = 10.0
+
 enum BleEvent {
     case power_on, power_off, advertising_ok, advertising_fail, error
 }
@@ -36,7 +39,7 @@ class BeaconController: NSObject, CBPeripheralManagerDelegate {
     func exec() {
         setState(newState:.setup)
         
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: false, block: { (timer) in
+        Timer.scheduledTimer(withTimeInterval: WAIT_BT_TIME, repeats: false, block: { (timer) in
             if (self.state == .setup) {
                 self.setState(newState:.fail)
                 // RunLoop 停止

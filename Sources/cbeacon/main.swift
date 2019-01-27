@@ -1,3 +1,11 @@
+//
+//  main.swift
+//  cbeacon
+//
+//  Created by ohya on 2018/12/31.
+//  Copyright © 2018年 ohya. All rights reserved.
+//
+
 import Foundation
 import Utility
 import Basic
@@ -162,6 +170,10 @@ func getArgs() -> (uuid: UUID, major: UInt16, minor: UInt16, time: UInt16) {
         print(error.localizedDescription)
     }
     exit(EXIT_FAILURE)
+}
+
+guard #available(macOS 10.12, *) else {
+    fatalError("This program requires macOS 10.12 or greater.")
 }
 
 // Get arguments

@@ -36,7 +36,7 @@ class BeaconController: NSObject, CBPeripheralManagerDelegate {
     func exec() {
         setState(newState:.setup)
         
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: false, block: { (timer) in
             if (self.state == .setup) {
                 self.setState(newState:.fail)
                 // RunLoop 停止

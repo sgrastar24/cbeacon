@@ -1,0 +1,64 @@
+.\" Copyright (C) 2019 Tokikazu Ohya (toki.ohya@gmail.com)
+.\" Manpage for cbeacon.
+.\" https://github.com/sgrastar24/cbeacon
+.
+.TH "CBEACON" "1" "January 2019" " " "User Commands"
+
+.SH "NAME"
+\fBcbeacon\fR \- iBeacon transmitter program
+
+.SH "SYNOPSIS"
+\fBcbeacon\fR [\fB\-\-time\fR \fIduration\fR] {Proximity UUID} {Major} {Minor}
+
+.br
+\fBcbeacon\fR \fB\-\-version\fR
+
+.SH "DESCRIPTION"
+cbeacon is a command line program that transmits iBeacon advertisements.
+iBeacon technology uses Bluetooth Low Energy (BLE).
+
+You must turn on Bluetooth on your machine when running this program.
+If Bluetooth is OFF, the program will display a message asking you to turn it on.Then the program will end if it does not turn on in 10 seconds. 
+
+The required arguments are Proximity UUID, Major and Minor.
+
+.SH "ARGUMENTS"
+
+.TP
+Proximity UUID
+This argument is case insensitive.
+
+.TP
+Major, Minor 
+These are 16 bits long number and range from 0 to 65535.
+These number is preceded by 0x is hexadecimal, preceded by a 0 is octal, and preceded by 0b is binary number.
+
+.SH "OPTIONS"
+
+.TP
+--time \fIduration\fR
+Duration time for transmission in seconds. The default is 5 seconds.
+
+.TP
+--version
+Print the version number and exit.
+
+.SH "NOTES"
+This program requires macOS 10.12 or greater.
+.br
+Measured Power of iBeacon is fixed at -68 dBm.
+
+.SH "EXIT STATUS"
+The cbeacon program exits 0 on success, and >0 if an error occurs.
+
+.SH "EXAMPLE"
+Transmits advertisements of Major 100 and Minor 200 for 30 seconds.
+.RS
+.PP
+cbeacon -t 30 550e8400-e29b-41d4-a716-446655440000 100 0xC8
+.RE
+
+.SH "BUGS"
+See issues on GitHub:
+.br
+\fIhttps://github.com/sgrastar24/cbeacon\fR

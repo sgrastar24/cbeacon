@@ -6,3 +6,4 @@ build:
 install: build
 	mkdir -p ${PREFIX}/bin
 	cp -f .build/release/cbeacon ${PREFIX}/bin/
+	cp -f man/cbeacon.1 ${PREFIX}/share/man/man1/

@@ -1,5 +1,9 @@
 # cbeacon
-iBeacon transmitter program for CLI
+cbeacon is a command line program that transmits iBeacon advertisements.
+
+### Requirements
+
+This program requires macOS 10.12 or greater.
 
 ### Help
 
@@ -22,4 +26,10 @@ POSITIONAL ARGUMENTS:
   uuid            Proximity UUID
   major           Major (16bits)
   minor           Minor (16bits)
+```
+
+### How to install
+
+```bash
+$ make install
 ```

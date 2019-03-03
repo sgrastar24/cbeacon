@@ -31,5 +31,5 @@ POSITIONAL ARGUMENTS:
 ### How to install
 
 ```bash
-$ make install
+$ brew install sgrastar24/tap/cbeacon
 ```

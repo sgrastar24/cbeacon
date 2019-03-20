@@ -1,11 +1,11 @@
 # cbeacon
 cbeacon is a command line program that transmits iBeacon advertisements.
 
-### Requirements
+## Requirements
 
 This program requires macOS 10.12 or greater.
 
-### Help
+## Help
 
 ```text
 $ cbeacon
@@ -28,8 +28,18 @@ POSITIONAL ARGUMENTS:
   minor           Minor (16bits)
 ```
 
-### How to install
+## Installation
+
+### HomeBrew
 
 ```bash
 $ brew install sgrastar24/tap/cbeacon
+```
+
+### Build by yourself
+
+```bash
+$ git clone https://github.com/sgrastar24/cbeacon.git
+$ cd cbeacon
+$ make install
 ```

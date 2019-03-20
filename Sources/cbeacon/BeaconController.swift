@@ -17,6 +17,7 @@ enum BleEvent {
     case power_on, power_off, advertising_ok, advertising_fail, error
 }
 
+@available(OSX 10.12, *)
 class BeaconController: NSObject, CBPeripheralManagerDelegate {
     enum State {
         case none, setup, ready, advertising, done, fail

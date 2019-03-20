@@ -11,7 +11,7 @@ import Utility
 import Basic
 
 let COMMAND_NAME = "cbeacon"
-let VERSION_CODE = "0.1.0"
+let VERSION_CODE = "0.2.0"
 
 let DEFAULT_DURATION: UInt16 = 5
 let MEASURED_POWER: Int8 = -68
@@ -74,13 +74,13 @@ func getArgs() -> (uuid: UUID, major: UInt16, minor: UInt16, time: UInt16) {
         let majorArg = parser.add(
             positional: "major",
             kind: String.self,
-            usage: "Major (16bits)")
+            usage: "Major (0-65535)")
 
         // Argument: minor
         let minorArg = parser.add(
             positional: "minor",
             kind: String.self,
-            usage: "Minor (16bits)")
+            usage: "Minor (0-65535)")
 
         // Option: time
         let timeOpt = parser.add(
@@ -172,20 +172,24 @@ func getArgs() -> (uuid: UUID, major: UInt16, minor: UInt16, time: UInt16) {
     exit(EXIT_FAILURE)
 }
 
-guard #available(macOS 10.12, *) else {
-    fatalError("This program requires macOS 10.12 or greater.")
+func main() {
+    guard #available(macOS 10.15, *) else {
+        fatalError("This program requires macOS 10.12 or greater.")
+    }
+
+    // Get arguments
+    let args = getArgs()
+    
+    // Create a data to transmit
+    let beacon = BeaconData(uuid: args.uuid, major: args.major, minor: args.minor, measuredPower: MEASURED_POWER)
+    
+    // Create a controller
+    let controller = BeaconController(beacon: beacon, duration: args.time)
+
+    // Execute the controller
+    controller.exec()
+    
+    exit(EXIT_SUCCESS)
 }
 
-// Get arguments
-let args = getArgs()
-
-// Create a data to transmit
-let beacon = BeaconData(uuid: args.uuid, major: args.major, minor: args.minor, measuredPower: MEASURED_POWER)
-
-// Create a controller
-var controller = BeaconController(beacon: beacon, duration: args.time)
-
-// Execute the controller
-controller.exec()
-
-exit(EXIT_SUCCESS)
+main()

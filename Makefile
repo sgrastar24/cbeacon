@@ -25,6 +25,9 @@ install: build
 	cp -f $(BUILD_DIR)/release/cbeacon $(PREFIX)/bin/
 	cp -f man/cbeacon.1 $(MAN1)/
 
+xcodeproj:
+	swift package generate-xcodeproj
+
 clean:
 	swift package clean
 	rm -rf $(BUILD_DIR)

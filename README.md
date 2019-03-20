@@ -30,7 +30,7 @@ POSITIONAL ARGUMENTS:
 
 ## Installation
 
-### HomeBrew
+### Homebrew
 
 ```bash
 $ brew install sgrastar24/tap/cbeacon

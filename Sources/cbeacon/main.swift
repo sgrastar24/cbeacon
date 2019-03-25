@@ -11,7 +11,7 @@ import Utility
 import Basic
 
 let COMMAND_NAME = "cbeacon"
-let VERSION_CODE = "0.2.0"
+let VERSION_CODE = "0.3.0"
 
 let DEFAULT_DURATION: UInt16 = 5
 let MEASURED_POWER: Int8 = -68
@@ -173,7 +173,7 @@ func getArgs() -> (uuid: UUID, major: UInt16, minor: UInt16, time: UInt16) {
 }
 
 func main() {
-    guard #available(macOS 10.15, *) else {
+    guard #available(macOS 10.12, *) else {
         fatalError("This program requires macOS 10.12 or greater.")
     }
 

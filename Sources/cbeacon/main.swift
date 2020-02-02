@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import Utility
+import SPMUtility
 import Basic
 
 let COMMAND_NAME = "cbeacon"
-let VERSION_CODE = "0.3.0"
+let VERSION_CODE = "0.4.0"
 
 let DEFAULT_DURATION: UInt16 = 5
 let MEASURED_POWER: Int8 = -68
@@ -51,52 +51,50 @@ func getArgs() -> (uuid: UUID, major: UInt16, minor: UInt16, time: UInt16) {
     do {
         // Create a parser
         let parser = ArgumentParser(
-            commandName: "",
-            usage: """
+                commandName: "",
+                usage: """
 
-              \(COMMAND_NAME) [--time duration] <uuid> <major> <minor>
-              \(COMMAND_NAME) --version
-            """,
-            overview: """
+                \(COMMAND_NAME) [--time duration] <uuid> <major> <minor>
+                \(COMMAND_NAME) --version
+                """,
+                overview: """
 
-              This command line tool is for transmit iBeacon advertisements.
-              iBeacon technology uses Bluetooth Low Energy (BLE).
-            """
-        )
+                This command line tool is for transmit iBeacon advertisements.
+                iBeacon technology uses Bluetooth Low Energy (BLE).
+                """
+            )
 
         // Argument: uuid
         let uuidArg = parser.add(
-            positional: "uuid",
-            kind: String.self,
-            usage: "Proximity UUID")
+                positional: "uuid",
+                kind: String.self,
+                usage: "Proximity UUID")
 
         // Argument: major
         let majorArg = parser.add(
-            positional: "major",
-            kind: String.self,
-            usage: "Major (0-65535)")
+                positional: "major",
+                kind: String.self,
+                usage: "Major (0-65535)")
 
         // Argument: minor
         let minorArg = parser.add(
-            positional: "minor",
-            kind: String.self,
-            usage: "Minor (0-65535)")
+                positional: "minor",
+                kind: String.self,
+                usage: "Minor (0-65535)")
 
         // Option: time
         let timeOpt = parser.add(
-            option: "--time",
-            shortName: "-t",
-            kind: Int.self,
-            usage: "Duration time for transmission in seconds. 5 seconds default.",
-            completion: .none)
+                option: "--time",
+                shortName: "-t",
+                kind: Int.self,
+                usage: "Duration time for transmission in seconds. 5 seconds default.")
 
         // Option: version
         let versionOpt = parser.add(
-            option: "--version",
-            shortName: "-v",
-            kind: Bool.self,
-            usage: "Print version",
-            completion: .none)
+                option: "--version",
+                shortName: "-v",
+                kind: Bool.self,
+                usage: "Print version")
 
         // Prepare the arguments
         let arguments = Array(CommandLine.arguments.dropFirst())

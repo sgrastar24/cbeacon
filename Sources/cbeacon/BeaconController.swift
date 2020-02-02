@@ -110,6 +110,8 @@ class BeaconController: NSObject, CBPeripheralManagerDelegate {
             receiveEvent(event: .power_off)
         case .unauthorized, .resetting, .unsupported, .unknown:
             receiveEvent(event: .error)
+        default:
+            break
         }
     }
     

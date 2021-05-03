@@ -35,5 +35,5 @@ clean:
 sha256: VERSION=$(shell git tag -l '*.*.*' | tail -n 1)
 sha256:
 	@echo VERSION=${VERSION}
-	(curl -f -L https://github.com/sgrastar24/cbeacon/archive/${VERSION}.tar.gz | shasum -a 256)
+	(curl -f -L https://github.com/sgrastar24/cbeacon/archive/refs/tags/${VERSION}.tar.gz | shasum -a 256)
 

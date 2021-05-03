@@ -11,7 +11,7 @@ import SPMUtility
 import Basic
 
 let COMMAND_NAME = "cbeacon"
-let VERSION_CODE = "0.4.1"
+let VERSION_CODE = "0.4.2"
 
 let DEFAULT_DURATION: UInt16 = 5
 let MEASURED_POWER: Int8 = -68
